@@ -5,11 +5,24 @@ import LocationInput from './locationInput';
 import WeatherOutput from './weatherOutput';
 
 
-export default function weatherBox(props) {
-  return (
-    <div>
-      <LocationInput />
-      <WeatherOutput />
-    </div>
-  ); 
+export default class WeatherBox extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      zipcode: '10201'
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Your Local Weather</h1>
+        <LocationInput onSubmit={zipcode => this.setState({ zipcode })} />
+        <WeatherOutput />
+      </div>
+    )
+  };
 }
+
+

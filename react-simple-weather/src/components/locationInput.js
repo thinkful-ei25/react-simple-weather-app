@@ -1,43 +1,13 @@
-export LocationInput from './locationInput';
-import WheatherOutput from './weatherOutput';
+import React from 'react';
 
+export default function LocationInput(props) {
 
-export default class weatherBox extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      places: [{
-        tempK: '280',
-        tempF: '72',
-        main: 'rain',
-        description: 'light rain',
-        name: 'Miami',
-        zip: 10201
-      },
-      {
-        tempK: '200',
-        tempF: '56',
-        main: 'rainy',
-        description: 'medium rain',
-        name: 'Boston',
-        zip: 10500
-      },
-      {
-        tempK: '380',
-        tempF: '95',
-        main: 'rainier',
-        description: 'heavy rain',
-        name: 'Green Bay',
-        zip: 20202
-      }]
-    };
-  }
-
-  render() {
+  return (
     <div>
-      <LocationInput />
-      <
+      <form onSubmit={e => { e.preventDefault(); props.onSubmit(e.target.zipcode.value) }}>
+        <input type="text" name="zipcode" placeholder="ZipCode..." id="zipcode" />
+        <button>GET WEATHER</button>
+      </form>
     </div>
-    }
-  
+  );
 }
